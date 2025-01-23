@@ -14,7 +14,7 @@ func sumar_item(id) -> void:
 	# Crear una instancia del slot desde el PackedScene
 	var slot = slot_scene.instantiate()
 	# Añadir el slot al GridContainer con su imagen segun randi
-	var ruta_imagen = "res://art/Items/item_" + str(id)
+	var ruta_imagen = "res://art/Items/item_" + str(id) +".png"
 	slot.set_imagen(ruta_imagen)
 	$GridContainer.add_child(slot)
 	pass

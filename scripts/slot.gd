@@ -20,9 +20,12 @@ func restar_en_inventario():
 	pass
 
 func set_imagen(ruta) -> void:
-	#texture = ruta
-	print("texture: " + ruta)
-	pass
+	print(ruta)
+	var nueva_textura = load(ruta)
+	if nueva_textura and nueva_textura is Texture:
+		texture = nueva_textura
+	else:
+		print("Error: La ruta no contiene una textura válida.")
 
 func _on_mouse_entered() -> void:
 	print("mouse marcando item comun  la idea es hacer que resalte o que se marque con un cuadrado")
