@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsws7x1g88mqa"]
+
+[ext_resource type="Script" path="res://scripts/slot_item_base.gd" id="1_flqwy"]
+[ext_resource type="Texture2D" uid="uid://dw12jd4aqt7ar" path="res://art/Items/item_slot_contorno.png" id="1_hn033"]
+[ext_resource type="Texture2D" uid="uid://bxxrsvawcnqgu" path="res://art/Items/espada.png" id="3_jbyks"]
+
+[node name="Slot_Item_Base" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1229.0
+offset_bottom = -667.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hn033")
+script = ExtResource("1_flqwy")
+
+[node name="CantidadLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -28.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 11.0
+text = "100"
+
+[node name="Item" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 46.0
+offset_bottom = 47.0
+texture = ExtResource("3_jbyks")
+expand_mode = 1
+stretch_mode = 4
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

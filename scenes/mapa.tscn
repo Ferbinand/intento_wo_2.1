@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq4d7pro67gem"]
+
+[ext_resource type="Texture2D" uid="uid://bf7ptfg7pk3jx" path="res://art/Mapas/llanura_map.png" id="1_0eksl"]
+
+[node name="Mapa" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.52588e-05, -2.50002)
+scale = Vector2(2.94737, 3.76098)
+texture = ExtResource("1_0eksl")

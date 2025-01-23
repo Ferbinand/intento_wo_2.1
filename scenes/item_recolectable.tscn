@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cphwi7lbmoi2m"]
+
+[ext_resource type="Script" path="res://scripts/item_recolectable.gd" id="1_2uklb"]
+[ext_resource type="Texture2D" uid="uid://om661wo3qdnl" path="res://art/Items/caja_de_madera.png" id="2_aeco0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_moecc"]
+size = Vector2(36, 37)
+
+[node name="ItemRecolectable" type="Area2D"]
+script = ExtResource("1_2uklb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -0.5)
+shape = SubResource("RectangleShape2D_moecc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.5, -1)
+scale = Vector2(0.0722656, 0.0742188)
+texture = ExtResource("2_aeco0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
