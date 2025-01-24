@@ -279,4 +279,4 @@ sprite_frames = SubResource("SpriteFrames_w1x2r")
 animation = &"idle"
 
 [node name="Item_equipado" parent="." instance=ExtResource("57_sx1q0")]
-position = Vector2(10, 0)
+position = Vector2(3, 0)

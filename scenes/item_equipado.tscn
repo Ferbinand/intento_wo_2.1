@@ -7,6 +7,6 @@
 script = ExtResource("1_fcu3u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(18, 0)
+position = Vector2(10, 0)
 scale = Vector2(0.84375, 0.78125)
 texture = ExtResource("2_a1cm6")

@@ -7,11 +7,16 @@ extends CharacterBody2D
 var vida_jugador = 100
 @onready var animacion_jugador = $MovimientoJugador
 signal recoger_item(id)
-
+var items = []  # Lista para almacenar los objetos
 
 func _ready():
-	#label_vida = get_node("CollisionShape2D/Label")
-	pass
+	items = cargar_items_json()
+	if items.size() > 0:
+		print("Objetos cargados del JSON:")
+		for item in items:
+			print(item)
+	else:
+		print("No se pudieron cargar los ítems.")
 
 func _physics_process(delta):
 	# Movimiento lateral
@@ -35,6 +40,24 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	# Mover el personaje
 	move_and_slide()
+
+# Función para cargar los datos del JSON
+func cargar_items_json() -> Array:
+	var json_path = "res://data/items.json"
+	var file = FileAccess.open(json_path, FileAccess.READ)
+	if file:
+		var content = file.get_as_text()
+		file.close()
+		
+		# Parsear el contenido JSON
+		var result = JSON.parse_string(content)
+		if result is Dictionary and result.has("error"):
+			print("Error al parsear JSON:", result.error_string)
+		elif result is Array:
+			return result
+		else:
+			print("El JSON no contiene un array en la raíz.")
+	return []
 
 # Función para que el personaje reciba daño
 func tomar_daño(cantidad):

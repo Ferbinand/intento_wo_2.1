@@ -2,7 +2,7 @@ extends PanelContainer
 
 @export var slot_scene = preload("res://scenes/slot.tscn")  # Cargar la escena de "slot"
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed ("abrir_inventario"):
 		if visible == false:
 			show()
