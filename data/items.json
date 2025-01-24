@@ -1,0 +1,58 @@
+[
+    {
+        "id": 3,
+        "nombre": "Espada",
+        "tipo": "equipable",
+        "max_stack": 20,
+        "url_img": "res://textures/espada.png"
+    },
+    {
+        "id": 4,
+        "nombre": "Escopeta",
+        "tipo": "equipable",
+        "max_stack": 25,
+        "url_img": "res://textures/escopeta.png"
+    },
+    {
+        "id": 5,
+        "nombre": "Pan",
+        "tipo": "consumible",
+        "max_stack": 30,
+        "url_img": "res://textures/pan.png"
+    },
+    {
+        "id": 6,
+        "nombre": "Cohete",
+        "tipo": "equipable",
+        "max_stack": 3,
+        "url_img": "res://textures/cohete.png"
+    },
+    {
+        "id": 7,
+        "nombre": "Mina terrestre",
+        "tipo": "consumible",
+        "max_stack": 10,
+        "url_img": "res://textures/mina_terrestre.png"
+    },
+    {
+        "id": 8,
+        "nombre": "Excavadora",
+        "tipo": "consumible",
+        "max_stack": 5,
+        "url_img": "res://textures/excavadora.png"
+    },
+    {
+        "id": 9,
+        "nombre": "teleportador",
+        "tipo": "consumible",
+        "max_stack": 1,
+        "url_img": "res://textures/teleportacion.png"
+    },
+    {
+        "id": 10,
+        "nombre": "Bomba Nuclear",
+        "tipo": "equipable",
+        "max_stack": 1,
+        "url_img": "res://textures/bomba_nuclear.png"
+    }
+]
