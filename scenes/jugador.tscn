@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://da24g2yb1b667"]
+[gd_scene load_steps=60 format=3 uid="uid://da24g2yb1b667"]
 
 [ext_resource type="Texture2D" uid="uid://ixdw8c3drmix" path="res://art/Jugador/ui/under_life_bar.png" id="1_qiufx"]
 [ext_resource type="Texture2D" uid="uid://cctiq2jfjkmvm" path="res://art/Jugador/attack/Attack__000.png" id="1_w2gr8"]
@@ -56,6 +56,7 @@
 [ext_resource type="Texture2D" uid="uid://bn84m5kt3p8n6" path="res://art/Jugador/throw/Throw__007.png" id="52_rbw7n"]
 [ext_resource type="Texture2D" uid="uid://bsrvg3vuibsf" path="res://art/Jugador/throw/Throw__008.png" id="53_q8s83"]
 [ext_resource type="Texture2D" uid="uid://dx5in1psf58ky" path="res://art/Jugador/throw/Throw__009.png" id="54_4bs5w"]
+[ext_resource type="PackedScene" uid="uid://c3xfabp86t51o" path="res://scenes/item_equipado.tscn" id="57_sx1q0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gidbs"]
 radius = 13.0
@@ -276,3 +277,6 @@ texture_progress = ExtResource("2_8yu0e")
 scale = Vector2(0.101749, 0.0865604)
 sprite_frames = SubResource("SpriteFrames_w1x2r")
 animation = &"idle"
+
+[node name="Item_equipado" parent="." instance=ExtResource("57_sx1q0")]
+position = Vector2(23, -13)
