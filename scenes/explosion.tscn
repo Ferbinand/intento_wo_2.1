@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1voirgwm4omw"]
+
+[ext_resource type="Texture2D" uid="uid://dw12jd4aqt7ar" path="res://art/Items/item_slot_contorno.png" id="1_mvb1m"]
+[ext_resource type="Script" path="res://scripts/explosion.gd" id="1_tcv7f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_guuig"]
+radius = 38.0526
+
+[node name="explosion" type="Area2D"]
+script = ExtResource("1_tcv7f")
+
+[node name="area_explosion" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_guuig")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mvb1m")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

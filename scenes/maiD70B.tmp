@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://dyw22ngplndqf"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_5p03q"]
+[ext_resource type="PackedScene" uid="uid://da24g2yb1b667" path="res://scenes/jugador.tscn" id="1_w25ys"]
+[ext_resource type="Script" path="res://scripts/jugador.gd" id="2_3a5jt"]
+[ext_resource type="PackedScene" uid="uid://b45dujdxy2e8r" path="res://scenes/terreno.tscn" id="3_h8ogi"]
+[ext_resource type="PackedScene" uid="uid://b4qkpah7hy7vu" path="res://scenes/bordes.tscn" id="4_dupqb"]
+[ext_resource type="PackedScene" uid="uid://cphwi7lbmoi2m" path="res://scenes/item_recolectable.tscn" id="5_i82k0"]
+[ext_resource type="PackedScene" uid="uid://b8juiwtwvlukx" path="res://scenes/spawner.tscn" id="6_n1qq6"]
+[ext_resource type="PackedScene" uid="uid://cq4d7pro67gem" path="res://scenes/mapa.tscn" id="8_vwoml"]
+[ext_resource type="PackedScene" uid="uid://lvigiuo7sb1n" path="res://scenes/inventario.tscn" id="9_qxlr0"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_5p03q")
+
+[node name="Jugador" parent="." instance=ExtResource("1_w25ys")]
+position = Vector2(86, 641)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("2_3a5jt")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_h8ogi")]
+
+[node name="Bordes" parent="." instance=ExtResource("4_dupqb")]
+
+[node name="ItemRecolectable" parent="." instance=ExtResource("5_i82k0")]
+position = Vector2(-160, -212)
+fall_speed = 175
+
+[node name="Spawner" parent="." instance=ExtResource("6_n1qq6")]
+position = Vector2(241, 235)
+
+[node name="Spawner2" parent="." instance=ExtResource("6_n1qq6")]
+position = Vector2(629, 162)
+
+[node name="Spawner3" parent="." instance=ExtResource("6_n1qq6")]
+position = Vector2(1010, 246)
+
+[node name="PartidaTimer" type="Timer" parent="."]
+
+[node name="InfoPartida" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="InfoPartida"]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 74.0
+offset_right = 726.0
+offset_bottom = 121.0
+text = "Texto Inicial"
+horizontal_alignment = 1
+
+[node name="Mapa" parent="." instance=ExtResource("8_vwoml")]
+show_behind_parent = true
+z_index = -1
+position = Vector2(620, 368)
+
+[node name="Inventario" parent="." instance=ExtResource("9_qxlr0")]
+
+[connection signal="recoger_item" from="Jugador" to="Inventario" method="_on_jugador_recoger_item"]
+[connection signal="timeout" from="PartidaTimer" to="." method="_on_partida_timer_timeout"]

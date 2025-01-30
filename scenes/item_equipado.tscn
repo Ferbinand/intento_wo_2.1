@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3xfabp86t51o"]
+[gd_scene load_steps=2 format=3 uid="uid://c3xfabp86t51o"]
 
 [ext_resource type="Script" path="res://scripts/item_equipado.gd" id="1_fcu3u"]
-[ext_resource type="Texture2D" uid="uid://ca8qmnfsbk0fs" path="res://art/Items/item_11.png" id="2_a1cm6"]
 
 [node name="Item_equipado" type="Node2D"]
 script = ExtResource("1_fcu3u")
@@ -9,4 +8,3 @@ script = ExtResource("1_fcu3u")
 [node name="Imagen" type="Sprite2D" parent="."]
 position = Vector2(10, 0)
 scale = Vector2(0.84375, 0.78125)
-texture = ExtResource("2_a1cm6")

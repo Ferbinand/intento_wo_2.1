@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfadkcprbx72e"]
+
+[ext_resource type="Script" path="res://scripts/proyectil.gd" id="1_ey5xu"]
+[ext_resource type="Texture2D" uid="uid://dddmxbqdp0eau" path="res://art/Items/bala_1.png" id="2_hyk0r"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5mwsd"]
+radius = 1.0
+height = 8.0
+
+[node name="Proyectil" type="RigidBody2D"]
+script = ExtResource("1_ey5xu")
+
+[node name="Imagen" type="Sprite2D" parent="."]
+position = Vector2(10, 0)
+scale = Vector2(1.33333, 1)
+texture = ExtResource("2_hyk0r")
+
+[node name="Colision" type="CollisionShape2D" parent="."]
+position = Vector2(10, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_5mwsd")
