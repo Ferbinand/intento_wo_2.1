@@ -4,6 +4,8 @@ extends TextureRect
 @onready var cantidad_armas_inicial = 0
 @export var id_inventario = 0
 @onready var cantidad = 0
+signal seleccionar_item(id)
+
 #func _get_drag_data(at_position: Vector2) -> Variant:
 	#var data = {}
 	#return data
@@ -13,6 +15,8 @@ extends TextureRect
 
 #func _drop_data(at_position: Vector2, data: Variant) -> void:
 	#pass
+
+
 func _ready() -> void:
 	if(id_inventario == 1 or id_inventario == 2):
 		self.set_cantidad(89)
@@ -41,13 +45,17 @@ func set_imagen(ruta) -> void:
 		print(ruta)
 		#texture = nueva_textura #POR AHORA EVITAR HASTA QUE HAYA IMAGENES DECENTES
 	else:
-		print("Error: La ruta no contiene una textura válida.")
+		print("Error: La ruta no contiene una textura válida o no existe.")
 	actualizar_cantidad()
 
 func _on_mouse_entered() -> void:
 	self.scale = Vector2(1.2, 1.2)
-	print(str(cantidad))
 
 func _on_mouse_exited() -> void:
 	# Restaurar el tamaño original
 	self.scale = Vector2(1, 1)
+
+func _on_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if cantidad > 0:  # Solo equipar si hay un ítem en el slot
+			seleccionar_item.emit(id_inventario)

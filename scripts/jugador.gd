@@ -1,13 +1,17 @@
 extends CharacterBody2D
 
-# Velocidad y fuerza de salto
+# MOVIMIENTO
 @export var speed := 200
 @export var jump_force := -400
 @export var gravity := 800
 var vida_jugador = 100
 @onready var animacion_jugador = $MovimientoJugador
-signal recoger_item(id)
+
+#ITEMS
 var items = []  # Lista para almacenar los objetos
+@onready var arma_actual = 0  # ID del arma equipada
+signal recoger_item(id)
+
 
 func _ready():
 	items = cargar_items_json()
@@ -70,6 +74,8 @@ func tomar_daño(cantidad):
 func sumar_item_inventario(id_item_sumado):
 	recoger_item.emit(id_item_sumado)
 
-func equipar_arma():
-	#$ItemEquipado.visible = true
-	pass
+func equipar_arma(id):
+	$Item_equipado.visible = true
+	var ruta_imagen = "res://art/Items/item_" + str(id) +".png"
+	var textura = load(ruta_imagen)  # Cargar textura 
+	$Item_equipado/Imagen.texture = textura  # Asignar textura
