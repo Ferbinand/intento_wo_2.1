@@ -19,4 +19,8 @@ func restar_en_inventario():
 
 
 func _on_mouse_entered() -> void:
-	print("mouse marcando item BASE  la idea es hacer que resalte o que se marque con un cuadrado")
+	self.scale = Vector2(1.2, 1.2)
+
+func _on_mouse_exited() -> void:
+	# Restaurar el tamaño original
+	self.scale = Vector2(1, 1)

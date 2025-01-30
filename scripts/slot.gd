@@ -37,4 +37,8 @@ func set_imagen(ruta) -> void:
 	actualizar_cantidad()
 
 func _on_mouse_entered() -> void:
-	print(id_inventario)
+	self.scale = Vector2(1.2, 1.2)
+
+func _on_mouse_exited() -> void:
+	# Restaurar el tamaño original
+	self.scale = Vector2(1, 1)
