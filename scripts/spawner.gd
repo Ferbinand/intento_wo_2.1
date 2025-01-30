@@ -8,7 +8,7 @@ func _on_timer_timeout() -> void:
 	pass # Replace with function body.
 
 func _spawn_item_recolectable(tiempo):
-	if((tiempo%5) == 0):
+	if((tiempo%2) == 0):
 		var item_recolectable = sc_ItemRecolectable.instantiate()
 		add_child(item_recolectable)
 	pass
