@@ -5,6 +5,20 @@ var slots = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	for id in range(1, 3): # IDs de 1 a 2
+		var slot_instance = slot_scene.instantiate()
+		slot_instance.set_id_inventario(id)  # Asignar ID al slot
+		slot_instance.set_cantidad(99) #asignamos a los item base un inicial
+		
+		if(id == 1):
+			slot_instance.set_imagen("res://art/Items/espada.png")
+		elif(id == 2):
+			slot_instance.set_imagen("res://art/Items/granada.png")
+		
+		slots[id] = slot_instance  # Guardar la instancia en el diccionario
+		
+		# Añadir el slot al GridContainer
+		$Control/PanelContainer/GridContainer.add_child(slot_instance)
 	# Crear instancias del slot dinámicamente y configurarlas
 	for id in range(3, 11):  # IDs de 3 a 10
 		var slot_instance = slot_scene.instantiate()
@@ -13,6 +27,7 @@ func _ready() -> void:
 		
 		# Añadir el slot al GridContainer
 		$Control/PanelContainer/GridContainer.add_child(slot_instance)
+
 
 
 func _on_jugador_recoger_item(id: Variant) -> void:

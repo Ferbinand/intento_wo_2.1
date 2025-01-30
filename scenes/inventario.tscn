@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://lvigiuo7sb1n"]
+[gd_scene load_steps=2 format=3 uid="uid://lvigiuo7sb1n"]
 
 [ext_resource type="Script" path="res://scripts/inventario_managment.gd" id="1_8e24e"]
-[ext_resource type="PackedScene" uid="uid://dsws7x1g88mqa" path="res://scenes/slot_item_base.tscn" id="2_rtckk"]
 
 [node name="Inventario" type="CanvasLayer"]
 script = ExtResource("1_8e24e")
@@ -24,9 +23,3 @@ offset_bottom = 127.0
 [node name="GridContainer" type="GridContainer" parent="Control/PanelContainer"]
 layout_mode = 2
 columns = 4
-
-[node name="Slot_Item_Base" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_rtckk")]
-layout_mode = 2
-
-[node name="Slot_Item_Base2" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_rtckk")]
-layout_mode = 2
