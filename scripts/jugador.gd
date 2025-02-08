@@ -17,7 +17,7 @@ var callable_damage = Callable(self,"tomar_damage")
 
 @export var explosion_scene = preload("res://scenes/explosion.tscn")  # Asignar la escena de la explosion 
 @export var proyectil_scene = preload("res://scenes/proyectil.tscn")  # Asignar la escena del proyectil
-var tiene_arma = true  # Suponemos que el jugador tiene un arma equipada
+var tiene_arma = false  # Suponemos que el jugador tiene un arma equipada
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -28,15 +28,23 @@ func disparar_proyectil(posicion_objetivo: Vector2):
 	# Instanciar la explosion
 	var explosion = explosion_scene.instantiate()
 	var proyectil = proyectil_scene.instantiate()
+	# Obtener la posición global de la punta del arma
+	var punto_salida = $Item_equipado/Cabezal_item.global_position
+	# Calcular la dirección y la fuerza inicial
+	var direccion = (posicion_objetivo - punto_salida).normalized()
+	var offset = direccion * 10  # Correccion sobre la direccion (entre mas, mas cerca del mouse estará)
+	# Configurar la posición inicial del proyectil
+	proyectil.global_position = punto_salida + offset
+	# Determinar si el mouse está a la izquierda o derecha del jugador
+	var mouse_pos = get_global_mouse_position()
+	var jugador_pos = global_position
+	proyectil.is_flip = mouse_pos.x < jugador_pos.x  # Flip si está a la izquierda
 	# Conectar la señal 
 	explosion.connect("hacer_damage", callable_damage, 0)
 	get_tree().root.add_child(proyectil)  # Añadir la proyectil a la escena
-	# Configurar la posición inicial (la del jugador)
-	proyectil.global_position = global_position
-	# Calcular la dirección y la fuerza inicial
-	var direccion = (posicion_objetivo - global_position).normalized()
-	var fuerza = 500  # Ajustar según la fuerza deseada
-	proyectil.apply_impulse(Vector2.ZERO, direccion * fuerza)
+	
+	 #var fuerza = 500  # Ajustar según la fuerza deseada
+	 #proyectil.apply_impulse(Vector2.ZERO, direccion * fuerza)
 
 func _ready():
 	items = cargar_items_json()
@@ -104,3 +112,4 @@ func equipar_arma(id):
 	var ruta_imagen = "res://art/Items/item_" + str(id) +".png"
 	var textura = load(ruta_imagen)  # Cargar textura 
 	$Item_equipado/Imagen.texture = textura  # Asignar textura
+	tiene_arma = true

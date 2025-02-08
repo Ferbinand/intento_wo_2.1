@@ -4,7 +4,7 @@ var damage = 10
 
 func _ready():
 	# Configuración inicial o temporizador para autodestruirse
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1).timeout
 	queue_free()
 
 
