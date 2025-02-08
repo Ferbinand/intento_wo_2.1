@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfadkcprbx72e"]
+[gd_scene load_steps=5 format=3 uid="uid://dfadkcprbx72e"]
 
 [ext_resource type="Script" path="res://scripts/proyectil.gd" id="1_ey5xu"]
 [ext_resource type="Texture2D" uid="uid://dddmxbqdp0eau" path="res://art/Items/bala_1.png" id="2_hyk0r"]
@@ -7,7 +7,11 @@
 radius = 1.0
 height = 8.0
 
-[node name="Proyectil" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i0e43"]
+radius = 2.0
+height = 10.0
+
+[node name="Proyectil" type="CharacterBody2D"]
 script = ExtResource("1_ey5xu")
 
 [node name="Imagen" type="Sprite2D" parent="."]
@@ -19,3 +23,10 @@ texture = ExtResource("2_hyk0r")
 position = Vector2(10, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_5mwsd")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(10, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_i0e43")

@@ -25,33 +25,26 @@ func _input(event):
 			disparar_proyectil(event.position)
 
 func disparar_proyectil(posicion_objetivo: Vector2):
-	# Instanciar la explosion
 	var explosion = explosion_scene.instantiate()
 	var proyectil = proyectil_scene.instantiate()
-	# Obtener la posición global de la punta del arma
 	var punto_salida = $Item_equipado/Cabezal_item.global_position
-	# Calcular la dirección y la fuerza inicial
 	var direccion = (posicion_objetivo - punto_salida).normalized()
-	var offset = direccion * 10  # Correccion sobre la direccion (entre mas, mas cerca del mouse estará)
-	# Configurar la posición inicial del proyectil
-	proyectil.global_position = punto_salida + offset
-	# Determinar si el mouse está a la izquierda o derecha del jugador
-	var mouse_pos = get_global_mouse_position()
-	var jugador_pos = global_position
-	proyectil.is_flip = mouse_pos.x < jugador_pos.x  # Flip si está a la izquierda
+	var fuerza = 450
+	var offset = direccion * 10  # Correccion sobre distancia frente a jugador y arma
+	proyectil.velocity = direccion * fuerza  # Asignar la velocidad inicial
+	proyectil.position = punto_salida + offset
+	# Ajustar la rotación del proyectil para que apunte hacia la dirección del disparo
+	proyectil.rotation = direccion.angle()
 	# Conectar la señal 
 	explosion.connect("hacer_damage", callable_damage, 0)
-	get_tree().root.add_child(proyectil)  # Añadir la proyectil a la escena
-	
-	 #var fuerza = 500  # Ajustar según la fuerza deseada
-	 #proyectil.apply_impulse(Vector2.ZERO, direccion * fuerza)
+	get_tree().root.add_child(proyectil)
 
 func _ready():
 	items = cargar_items_json()
 	if items.size() > 0:
-		print("Objetos cargados del JSON:")
+		print("Objetos cargados del JSON")
 		for item in items:
-			print(item)
+			pass
 	else:
 		print("No se pudieron cargar los ítems.")
 
